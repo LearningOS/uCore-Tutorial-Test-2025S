@@ -1,6 +1,6 @@
 # uCore-Tutorial-Tests
 
-User testcases for [uCore-Tutorial-Code-2024S](https://github.com/learningos/uCore-Tutorial-Code-2024S).
+User testcases for [uCore-Tutorial-Code-2024A](https://github.com/learningos/uCore-Tutorial-Code-2024A).
 
 ### Usage
 
