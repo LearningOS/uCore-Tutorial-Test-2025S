@@ -144,23 +144,23 @@ int fstat(int fd, Stat *st)
 	return syscall(SYS_fstat, fd, st);
 }
 
-int sys_linkat(int olddirfd, char *oldpath, int newdirfd, char *newpath,
+int sys_linkat(int olddirfd, const char *oldpath, int newdirfd, const char *newpath,
 	       unsigned int flags)
 {
 	return syscall(SYS_linkat, olddirfd, oldpath, newdirfd, newpath, flags);
 }
 
-int sys_unlinkat(int dirfd, char *path, unsigned int flags)
+int sys_unlinkat(int dirfd, const char *path, unsigned int flags)
 {
 	return syscall(SYS_unlinkat, dirfd, path, flags);
 }
 
-int link(char *old_path, char *new_path)
+int link(const char *old_path, const char *new_path)
 {
 	return sys_linkat(AT_FDCWD, old_path, AT_FDCWD, new_path, 0);
 }
 
-int unlink(char *path)
+int unlink(const char *path)
 {
 	return sys_unlinkat(AT_FDCWD, path, 0);
 }
@@ -244,6 +244,7 @@ int enable_deadlock_detect(int enabled)
 	return syscall(SYS_enable_deadlock_detect, enabled);
 }
 
-int sbrk(int n){
+long sbrk(long n)
+{
 	return syscall(SYS_sbrk, n);
 }

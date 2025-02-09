@@ -4,7 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
-char STR[] = "hello pipe!";
+const char STR[] = "hello pipe!";
 
 int main()
 {

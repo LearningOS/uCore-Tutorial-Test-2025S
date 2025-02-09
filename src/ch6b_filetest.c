@@ -9,7 +9,7 @@ int main()
 	int exit_code;
 	int fd = open("test\0", O_CREATE | O_WRONLY);
 	printf("open OK, fd = %d\n", fd);
-	char str[100] = "hello world!\0";
+	static char str[100] = "hello world!\0";
 	int len = strlen(str);
 	write(fd, str, len);
 	close(fd);

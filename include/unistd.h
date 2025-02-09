@@ -29,11 +29,11 @@ int pipe(void *p);
 int mailread(void *buf, int len);
 int mailwrite(int pid, void *buf, int len);
 int fstat(int fd, Stat *st);
-int sys_linkat(int olddirfd, char *oldpath, int newdirfd, char *newpath,
+int sys_linkat(int olddirfd, const char *oldpath, int newdirfd, const char *newpath,
 	       unsigned int flags);
-int sys_unlinkat(int dirfd, char *path, unsigned int flags);
-int link(char *old_path, char *new_path);
-int unlink(char *path);
+int sys_unlinkat(int dirfd, const char *path, unsigned int flags);
+int link(const char *old_path, const char *new_path);
+int unlink(const char *path);
 int thread_create(void *entry, void *arg);
 int gettid(void);
 int waittid(int tid);
@@ -48,5 +48,8 @@ int condvar_create();
 int condvar_signal(int cid);
 int condvar_wait(int cid, int mid);
 int enable_deadlock_detect(int enabled);
+
+// NOTE: The real signature should be void *sbrk(intptr_t), we use `long` here to keep compatible with the tests
+long sbrk(long delta);
 
 #endif // __UNISTD_H__

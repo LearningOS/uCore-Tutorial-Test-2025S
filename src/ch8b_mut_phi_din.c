@@ -49,7 +49,7 @@ int main()
 	}
 	// Notice: Children threads creating must be after mutex creation
 	for (int i = 0; i < N; i++) {
-		threads[i] = thread_create(philosopher_dining, (void *)i);
+		threads[i] = thread_create(philosopher_dining, (void *)(long) i);
 		assert(threads[i] > 0);
 	}
 	puts("Phil threads created");

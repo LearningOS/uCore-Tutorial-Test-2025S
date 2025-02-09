@@ -53,7 +53,7 @@ int main()
 	assert((sem_empty_id = semaphore_create(buffer_size)) >= 0);
 	assert((sem_existed_id = semaphore_create(0)) >= 0);
 	for (int i = 0; i < producers; i++) {
-		threads[i] = thread_create(producer, (void *)i);
+		threads[i] = thread_create(producer, (void *)(long) i);
 		assert(threads[i] > 0);
 	}
 	threads[producers] = thread_create(consumer, 0);

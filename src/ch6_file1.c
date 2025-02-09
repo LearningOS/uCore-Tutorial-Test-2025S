@@ -8,7 +8,7 @@
 
 int main()
 {
-	char *fname = "fname1";
+	const char *fname = "fname1";
 	int fd = open(fname, O_CREATE | O_WRONLY);
 	assert(fd > 0);
 	Stat stat;

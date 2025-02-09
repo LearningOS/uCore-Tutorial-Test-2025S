@@ -53,7 +53,7 @@ int main()
 	}
 	int threads[THREAD_N] = {};
 	for (int i = 0; i < THREAD_N; i++) {
-		threads[i] = thread_create(deadlock_test, (void *)i);
+		threads[i] = thread_create(deadlock_test, (void *)(long) i);
 		assert(threads[i] == i + 1);
 	}
 	sleep(500);

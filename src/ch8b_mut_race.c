@@ -34,7 +34,7 @@ int main()
 	int64 start = get_mtime();
 	assert((mutex_id = mutex_blocking_create()) >= 0);
 	for (int i = 0; i < thread_count; i++) {
-		threads[i] = thread_create(fun, (void *)i);
+		threads[i] = thread_create(fun, (void *)(long) i);
 		assert(threads[i] > 0);
 	}
 	for (int i = 0; i < thread_count; i++) {

@@ -6,7 +6,7 @@
 
 int main()
 {
-	char *filea = "filea\0";
+	const char *filea = "filea\0";
 	int fd = open(filea, O_RDONLY);
 	if (fd < 0) {
 		printf("Fail to open file %s\n", filea);

@@ -8,8 +8,8 @@
 
 int main()
 {
-	char *test_str = "Hello, world!";
-	char *fname = "fname";
+	const char *test_str = "Hello, world!";
+	const char *fname = "fname";
 	int fd = open(fname, O_CREATE | O_WRONLY);
 	assert(fd > 0);
 	write(fd, test_str, strlen(test_str));
