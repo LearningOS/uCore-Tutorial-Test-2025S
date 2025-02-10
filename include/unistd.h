@@ -18,7 +18,6 @@ int64 get_mtime();
 int sys_get_time(TimeVal *ts,
 		 int tz); // syscall ID: 169; tz 表示时区，这里无需考虑，始终为0;
 // 返回值：正确返回 0，错误返回 -1。
-int sys_task_info(TaskInfo *ti);
 int sleep(unsigned long long);
 int set_priority(int prio);
 int mmap(void *start, unsigned long long len, int prot, int flag, int shmem_id);
@@ -51,5 +50,16 @@ int enable_deadlock_detect(int enabled);
 
 // NOTE: The real signature should be void *sbrk(intptr_t), we use `long` here to keep compatible with the tests
 long sbrk(long delta);
+
+enum trace_request {
+	TRACE_READ,
+	TRACE_WRITE,
+	TRACE_SYSCALL,
+};
+
+int trace(enum trace_request req, unsigned long id, uint8 data);
+int trace_read(const uint8 *addr);
+int trace_write(uint8 *addr, uint8 data);
+int count_syscall(int id);
 
 #endif // __UNISTD_H__

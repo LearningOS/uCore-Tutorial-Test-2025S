@@ -75,19 +75,6 @@ typedef struct {
 	uint64 pad[7]; // 无需考虑，为了兼容性设计
 } Stat;
 
-typedef enum {
-	UnInit,
-	Ready,
-	Running,
-	Exited,
-} TaskStatus;
-
-typedef struct {
-	TaskStatus status;
-	unsigned int syscall_times[MAX_SYSCALL_NUM];
-	int time;
-} TaskInfo;
-
 #define MAP_ANONYMOUS (0)
 #define MAP_SHARED (1)
 

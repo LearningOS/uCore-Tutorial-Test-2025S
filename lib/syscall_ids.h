@@ -281,7 +281,7 @@
 #define SYS_spawn 400
 #define SYS_mailread 401
 #define SYS_mailwrite 402
-#define SYS_task_info 410
+#define SYS_trace 410
 #define SYS_thread_create 460
 #define SYS_waittid 462
 #define SYS_mutex_create 463

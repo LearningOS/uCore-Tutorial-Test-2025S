@@ -94,11 +94,6 @@ int sleep(unsigned long long time)
 	return 0;
 }
 
-int sys_task_info(TaskInfo *ti)
-{
-	return syscall(SYS_task_info, ti);
-}
-
 int set_priority(int prio)
 {
 	return syscall(SYS_setpriority, prio);
@@ -247,4 +242,24 @@ int enable_deadlock_detect(int enabled)
 long sbrk(long n)
 {
 	return syscall(SYS_sbrk, n);
+}
+
+int trace(enum trace_request req, unsigned long id, uint8 data)
+{
+	return syscall(SYS_trace, req, id, data);
+}
+
+int trace_read(const uint8 *addr)
+{
+	return trace(TRACE_READ, (unsigned long) addr, 0);
+}
+
+int trace_write(uint8 *addr, uint8 data)
+{
+	return trace(TRACE_WRITE, (unsigned long) addr, data);
+}
+
+int count_syscall(int id)
+{
+	return trace(TRACE_SYSCALL, id, 0);
 }
