@@ -26,7 +26,7 @@ int main()
 
 	// 看看puts的实现，想想为什么 write 调用只有一次
 	// NOTE: This differs from rCore's user lib implementation
-	puts(__FILE__);
+	puts("string from task trace test");
 	int64 t4 = get_mtime();
 	int64 t5 = get_mtime();
 	assert(5 <= count_syscall(SYSCALL_GETTIMEOFDAY));
