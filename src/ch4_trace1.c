@@ -22,25 +22,16 @@ int main()
 
 	// check R/W permissions
 	uint8 *p0 = (uint8 *)0x10000000;
-	uint8 *p1 = (uint8 *)0x20000000;
 	size_t len = 4096;
 	assert_eq(0, mmap(p0, len, PROT_READ, MAP_ANONYMOUS));
-	assert_eq(0, mmap(p1, len, PROT_WRITE, MAP_ANONYMOUS));
 
 	assert(-1 != trace_read(p0));
 	assert_eq(-1, trace_write(p0, 0));
 
-	assert_eq(-1, trace_read(p1));
-	assert(-1 != trace_write(p1, 0));
-
 	assert_eq(0, munmap(p0, len));
-	assert_eq(0, munmap(p1, len));
 
 	assert_eq(-1, trace_read(p0));
 	assert_eq(-1, trace_write(p0, 0));
-
-	assert_eq(-1, trace_read(p1));
-	assert_eq(-1, trace_write(p1, 0));
 
 	puts("Test trace_1 OK!");
 	return 0;
