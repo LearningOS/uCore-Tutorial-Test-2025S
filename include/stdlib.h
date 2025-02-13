@@ -25,12 +25,22 @@ extern char *basename(char *);
 	panic("assert error: " STRINGIFY(f))
 #endif
 
+// #ifndef assert_eq
+// #define assert_eq(a, b)                                                        \
+// 	if (!((a) == (b)))                                                     \
+// 		panic("assert_eq error: "                                      \
+// 		      "%p != %p",                                              \
+// 		      a, b);
+// #endif
+
 #ifndef assert_eq
 #define assert_eq(a, b)                                                        \
-	if (!((a) == (b)))                                                     \
-		panic("assert_eq error: "                                      \
-		      "%p != %p",                                              \
-		      a, b);
+	do {                                                                   \
+		__typeof(a) __a = (a);                                         \
+		__typeof(b) __b = (b);                                         \
+		if (__a != __b)                                              \
+			panic("assert_eq failed: %p != %p", __a, __b);         \
+	} while (0)
 #endif
 
 void srand(int s);
