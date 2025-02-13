@@ -99,9 +99,9 @@ int set_priority(int prio)
 	return syscall(SYS_setpriority, prio);
 }
 
-int mmap(void *start, unsigned long long len, int prot, int flag, int sd)
+int mmap(void *start, unsigned long long len, int prot, int flags)
 {
-	return syscall(SYS_mmap, start, len, prot, flag, sd);
+	return syscall(SYS_mmap, start, len, prot, flags);
 }
 
 int munmap(void *start, unsigned long long len)

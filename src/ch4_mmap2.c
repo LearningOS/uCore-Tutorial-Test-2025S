@@ -11,8 +11,8 @@ int main()
 {
 	uint64 start = 0x10000000;
 	uint64 len = 4096;
-	int prot = 2;
-	assert_eq(0, mmap((void *)start, len, prot, MAP_ANONYMOUS, -1));
+	int prot = PROT_WRITE;
+	assert_eq(0, mmap((void *)start, len, prot, MAP_ANONYMOUS));
 	uint8 *addr = (uint8 *)start;
 	// *addr = (uint8)start; // can't write, R, 0 && W, 1 is illegal in riscv
 	assert(*addr != 0);

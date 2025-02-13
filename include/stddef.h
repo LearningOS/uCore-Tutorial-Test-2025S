@@ -75,7 +75,14 @@ typedef struct {
 	uint64 pad[7]; // 无需考虑，为了兼容性设计
 } Stat;
 
-#define MAP_ANONYMOUS (0)
+// flags for mmap
+#define PROT_NONE 0
+#define PROT_READ 1
+#define PROT_WRITE 2
+#define PROT_EXEC 4
+
+// better keep in sync with real linux headers
+#define MAP_ANONYMOUS (0x20)
 #define MAP_SHARED (1)
 
 #endif // __STDDEF_H__
