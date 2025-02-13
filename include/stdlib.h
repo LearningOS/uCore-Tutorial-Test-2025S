@@ -25,13 +25,15 @@ extern char *basename(char *);
 	panic("assert error: " STRINGIFY(f))
 #endif
 
-// #ifndef assert_eq
-// #define assert_eq(a, b)                                                        \
-// 	if (!((a) == (b)))                                                     \
-// 		panic("assert_eq error: "                                      \
-// 		      "%p != %p",                                              \
-// 		      a, b);
-// #endif
+/*
+#ifndef assert_eq
+#define assert_eq(a, b)                                                        \
+	if (!((a) == (b)))                                                     \
+		panic("assert_eq error: "                                      \
+		      "%p != %p",                                              \
+		      a, b);
+#endif
+*/
 
 #ifndef assert_eq
 #define assert_eq(a, b)                                                        \
